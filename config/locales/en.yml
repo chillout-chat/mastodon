@@ -1375,6 +1375,7 @@ en:
     contrast: Mastodon (High contrast)
     default: Mastodon (Dark)
     mastodon-light: Mastodon (Light)
+    mastodon-auto: Mastodon (Auto)
     tropical: Tropical
   time:
     formats:
