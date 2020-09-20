@@ -81,6 +81,8 @@ const messages = defineMessages({
   unlisted_short: { id: 'privacy.unlisted.short', defaultMessage: 'Unlisted' },
   private_short: { id: 'privacy.private.short', defaultMessage: 'Followers-only' },
   direct_short: { id: 'privacy.direct.short', defaultMessage: 'Direct' },
+  federated_short: { id: 'federation.federated.short', defaultMessage: 'Federated' },
+  local_only_short: { id: 'federation.local_only.short', defaultMessage: 'Local-only' },
 });
 
 export default @connect(mapStateToProps)
@@ -526,6 +528,18 @@ class Status extends ImmutablePureComponent {
 
     const visibilityIcon = visibilityIconInfo[status.get('visibility')];
 
+    const federationIconInfo = {
+      'federated': { icon: 'chain', text: intl.formatMessage(messages.federated_short) },
+      'local-only': { icon: 'chain-broken', text: intl.formatMessage(messages.local_only_short) },
+    };
+
+    let federationIcon;
+    if (!status.get('local_only')) {
+      federationIcon = federationIconInfo['federated'];
+    } else {
+      federationIcon = federationIconInfo['local-only'];
+    }
+
     let quote = null;
     if (status.get('quote', null) !== null && typeof status.get('quote') === 'object') {
       let quote_status = status.get('quote');
@@ -662,6 +676,7 @@ class Status extends ImmutablePureComponent {
             <div className='status__info'>
               <a href={status.get('url')} className='status__relative-time' target='_blank' rel='noopener noreferrer'>
                 <span className='status__visibility-icon'><Icon id={visibilityIcon.icon} title={visibilityIcon.text} /></span>
+                <span className='status__federation-icon'><Icon id={federationIcon.icon} title={federationIcon.text} /></span>
                 <RelativeTimestamp timestamp={status.get('created_at')} />
               </a>
 
