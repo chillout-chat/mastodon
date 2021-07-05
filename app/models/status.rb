@@ -93,6 +93,7 @@ class Status < ApplicationRecord
   scope :without_replies, -> { where('statuses.reply = FALSE OR statuses.in_reply_to_account_id = statuses.account_id') }
   scope :without_reblogs, -> { where('statuses.reblog_of_id IS NULL') }
   scope :with_public_visibility, -> { where(visibility: :public) }
+  scope :with_hashtag_visibility, -> { where(visibility: :public).or(where(visibility: :unlisted)).or(where(visibility: :private)).or(where(visibility: :direct)) }
   scope :tagged_with, ->(tag_ids) { joins(:statuses_tags).where(statuses_tags: { tag_id: tag_ids }) }
   scope :in_chosen_languages, ->(account) { where(language: nil).or where(language: account.chosen_languages) }
   scope :excluding_silenced_accounts, -> { left_outer_joins(:account).where(accounts: { silenced_at: nil }) }
