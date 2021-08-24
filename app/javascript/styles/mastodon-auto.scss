@@ -1,2 +1,5 @@
 @import 'application';
-@media (prefers-color-scheme: light) { @import 'mastodon-light'; }
+@media (prefers-color-scheme: light) {
+  @import 'mastodon-light/variables';
+  @import 'mastodon-light/diff';
+}
