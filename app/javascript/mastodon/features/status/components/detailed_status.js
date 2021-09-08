@@ -23,6 +23,8 @@ const messages = defineMessages({
   unlisted_short: { id: 'privacy.unlisted.short', defaultMessage: 'Unlisted' },
   private_short: { id: 'privacy.private.short', defaultMessage: 'Followers-only' },
   direct_short: { id: 'privacy.direct.short', defaultMessage: 'Direct' },
+  federated_short: { id: 'federation.federated.short', defaultMessage: 'Federated' },
+  local_only_short: { id: 'federation.local_only.short', defaultMessage: 'Local-only' },
 });
 
 const mapStateToProps = (state, props) => {
@@ -164,6 +166,7 @@ class DetailedStatus extends ImmutablePureComponent {
     let media           = '';
     let applicationLink = '';
     let reblogLink = '';
+    let localOnly = '';
     let reblogIcon = 'retweet';
     let favouriteLink = '';
 
@@ -328,6 +331,13 @@ class DetailedStatus extends ImmutablePureComponent {
     const visibilityIcon = visibilityIconInfo[status.get('visibility')];
     const visibilityLink = <React.Fragment> · <Icon id={visibilityIcon.icon} title={visibilityIcon.text} /></React.Fragment>;
 
+    let federationLink;
+    if (status.get('local_only')) {
+      federationLink = <span> · <i className='fa fa-chain-broken' title={intl.formatMessage(messages.local_only_short)} /></span>;
+    } else {
+      federationLink = <span> · <i className='fa fa-chain' title={intl.formatMessage(messages.federated_short)} /></span>;
+    }
+
     if (['private', 'direct'].includes(status.get('visibility'))) {
       reblogLink = '';
     } else if (this.context.router) {
@@ -392,7 +402,7 @@ class DetailedStatus extends ImmutablePureComponent {
           <div className='detailed-status__meta'>
             <a className='detailed-status__datetime' href={status.get('url')} target='_blank' rel='noopener noreferrer'>
               <FormattedDate value={new Date(status.get('created_at'))} hour12={false} year='numeric' month='short' day='2-digit' hour='2-digit' minute='2-digit' />
-            </a>{visibilityLink}{applicationLink}{reblogLink} · {favouriteLink}
+            </a>{visibilityLink}{federationLink}{applicationLink}{reblogLink} · {favouriteLink}
           </div>
         </div>
       </div>
