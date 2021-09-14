@@ -333,9 +333,9 @@ class DetailedStatus extends ImmutablePureComponent {
 
     let federationLink;
     if (status.get('local_only')) {
-      federationLink = <span> · <i className='fa fa-chain-broken' title={intl.formatMessage(messages.local_only_short)} /></span>;
+      federationLink = <span> · <i className='fa fa-unlink' title={intl.formatMessage(messages.local_only_short)} /></span>;
     } else {
-      federationLink = <span> · <i className='fa fa-chain' title={intl.formatMessage(messages.federated_short)} /></span>;
+      federationLink = '';
     }
 
     if (['private', 'direct'].includes(status.get('visibility'))) {
