@@ -772,6 +772,7 @@ en:
   auth:
     apply_for_account: Request an invite
     change_password: Password
+    checkbox_13: I am over 13 years old
     checkbox_agreement_html: I agree to the <a href="%{rules_path}" target="_blank">server rules</a> and <a href="%{terms_path}" target="_blank">terms of service</a>
     checkbox_agreement_without_rules_html: I agree to the <a href="%{terms_path}" target="_blank">terms of service</a>
     delete_account: Delete account
