@@ -51,7 +51,7 @@ module PamAuthenticable
       end
 
       if resource.nil?
-        resource = new(email: attributes[:email], agreement: true)
+        resource = new(email: attributes[:email], agreement: true, thirteen: true)
 
         if Devise.check_at_sign && !resource[:email].index('@')
           resource[:email] = Rpam2.getenv(resource.find_pam_service, attributes[:email], attributes[:password], 'email', false)

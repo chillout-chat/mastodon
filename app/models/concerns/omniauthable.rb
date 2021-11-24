@@ -69,6 +69,7 @@ module Omniauthable
       {
         email: email || "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
         agreement: true,
+        thirteen: true,
         external: true,
         account_attributes: {
           username: ensure_unique_username(auth.uid),

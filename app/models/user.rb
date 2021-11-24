@@ -89,6 +89,7 @@ class User < ApplicationRecord
   validates_with BlacklistedEmailValidator, on: :create
   validates_with EmailMxValidator, if: :validate_email_dns?
   validates :agreement, acceptance: { allow_nil: false, accept: [true, 'true', '1'] }, on: :create
+  validates :thirteen, acceptance: { allow_nil: false, accept: [true, 'true', '1'] }, on: :create
 
   # Those are honeypot/antispam fields
   attr_accessor :registration_form_time, :website, :confirm_password

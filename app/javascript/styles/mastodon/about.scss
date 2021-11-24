@@ -767,7 +767,8 @@ $small-breakpoint: 960px;
     }
   }
 
-  .simple_form .user_agreement .label_input > label {
+  .simple_form .user_agreement .label_input > label,
+  .simple_form .user_thirteen .label_input > label, {
     font-weight: 400;
     color: $darker-text-color;
   }
