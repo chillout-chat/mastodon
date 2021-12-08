@@ -62,3 +62,13 @@
     border-radius: 50%;
   }
 }
+
+.notification {
+	.status__avatar-cat {
+		top: 10px;
+
+		&:before, &:after {
+	    display: none;
+	  }
+	}
+}
