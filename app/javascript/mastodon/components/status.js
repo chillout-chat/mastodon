@@ -537,7 +537,11 @@ class Status extends ImmutablePureComponent {
     let avatarClassName = 'status__avatar';
 
     if (status.getIn(['account', 'cat'])) {
-      avatarClassName = avatarClassName + ' status__avatar-cat';
+      if (status.get('reblog', null) !== null && typeof status.get('reblog') === 'object') {
+        let avatarClassName = 'status__avatar';
+      } else {
+        avatarClassName = avatarClassName + ' status__avatar-cat';
+      }
     }
 
     let quote = null;
