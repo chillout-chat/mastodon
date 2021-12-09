@@ -18,18 +18,25 @@ export default class AvatarOverlay extends React.PureComponent {
   render() {
     const { account, friend, animate } = this.props;
 
-    const baseStyle = {
-      backgroundImage: `url(${account.get(animate ? 'avatar' : 'avatar_static')})`,
-    };
+    let baseClassName = 'account__avatar-overlay-base-wrapper';
+    let overlayClassName = 'account__avatar-overlay-overlay-wrapper';
 
-    const overlayStyle = {
-      backgroundImage: `url(${friend.get(animate ? 'avatar' : 'avatar_static')})`,
-    };
+    if (account.get('cat')) {
+      baseClassName = baseClassName + ' account__avatar-overlay-base-wrapper-cat';
+    }
+
+    if (friend.get('cat')) {
+      overlayClassName = overlayClassName + ' account__avatar-overlay-overlay-wrapper-cat';
+    }
 
     return (
       <div className='account__avatar-overlay'>
-        <div className='account__avatar-overlay-base' style={baseStyle} />
-        <div className='account__avatar-overlay-overlay' style={overlayStyle} />
+        <div className={baseClassName}>
+          <img className='account__avatar-overlay-base' src={account.get(animate ? 'avatar' : 'avatar_static')} />
+        </div>
+        <div className={overlayClassName}>
+          <img className='account__avatar-overlay-overlay' src={friend.get(animate ? 'avatar' : 'avatar_static')} />
+        </div>
       </div>
     );
   }

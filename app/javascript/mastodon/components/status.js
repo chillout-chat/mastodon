@@ -534,16 +534,6 @@ class Status extends ImmutablePureComponent {
       federationIcon = '';
     }
 
-    let avatarClassName = 'status__avatar';
-
-    if (status.getIn(['account', 'cat'])) {
-      if (status.get('reblog', null) !== null && typeof status.get('reblog') === 'object') {
-        let avatarClassName = 'status__avatar';
-      } else {
-        avatarClassName = avatarClassName + ' status__avatar-cat';
-      }
-    }
-
     let quote = null;
     if (status.get('quote', null) !== null && typeof status.get('quote') === 'object') {
       let quote_status = status.get('quote');
@@ -651,7 +641,7 @@ class Status extends ImmutablePureComponent {
           <div className={classNames('quote-status', `status-${quote_status.get('visibility')}`, { muted: this.props.muted })} data-id={quote_status.get('id')}>
             <div className='status__info'>
               <a onClick={this.handleAccountClick} target='_blank' data-id={quote_status.getIn(['account', 'id'])} href={quote_status.getIn(['account', 'url'])} title={quote_status.getIn(['account', 'acct'])} className='status__display-name'>
-                <div className={avatarClassName}><Avatar account={quote_status.get('account')} size={18} /></div>
+                <div className='status__avatar'><Avatar account={quote_status.get('account')} size={18} /></div>
                 <DisplayName account={quote_status.get('account')} />
               </a>
             </div>
@@ -685,7 +675,7 @@ class Status extends ImmutablePureComponent {
               </a>
 
               <a onClick={this.handleAccountClick} data-id={status.getIn(['account', 'id'])} href={status.getIn(['account', 'url'])} title={status.getIn(['account', 'acct'])} className='status__display-name' target='_blank' rel='noopener noreferrer'>
-                <div className={avatarClassName}>
+                <div className='status__avatar'>
                   {statusAvatar}
                 </div>
 

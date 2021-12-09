@@ -41,10 +41,21 @@ export default class Avatar extends React.PureComponent {
     const staticSrc = account.get('avatar_static');
 
     let className = 'account__avatar';
+    let wrapperClassName = 'avatar__wrapper';
+
+    if (account.get('cat')) {
+      wrapperClassName = wrapperClassName + ' avatar__wrapper-cat';
+    }
 
     if (inline) {
       className = className + ' account__avatar-inline';
     }
+
+    const wrapperStyle = {
+      ...this.props.style,
+      width: `${size}px`,
+      height: `${size}px`,
+    };
 
     const style = {
       ...this.props.style,
@@ -53,19 +64,16 @@ export default class Avatar extends React.PureComponent {
       backgroundSize: `${size}px ${size}px`,
     };
 
-    if (hovering || animate) {
-      style.backgroundImage = `url(${src})`;
-    } else {
-      style.backgroundImage = `url(${staticSrc})`;
-    }
-
     return (
-      <div
-        className={className}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-        style={style}
-      />
+      <div className={wrapperClassName} style={wrapperStyle}>
+      　<img
+          className={className}
+          src={src}
+          style={style}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+        />
+      </div>
     );
   }
 

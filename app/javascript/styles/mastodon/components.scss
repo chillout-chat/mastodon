@@ -1431,10 +1431,15 @@
   margin-right: 12px;
 }
 
+.avatar__wrapper {
+  position: relative;
+}
+
 .account__avatar {
   @include avatar-radius;
   display: block;
-  position: relative;
+  position: absolute;
+  top: 0;
 
   width: 36px;
   height: 36px;
@@ -1476,10 +1481,14 @@ a .account__avatar {
   cursor: pointer;
 }
 
+.contact-widget .account__avatar {
+  position: relative;
+}
+
 .account__avatar-overlay {
   @include avatar-size(48px);
 
-  &-base {
+  &-base-wrapper {
     @include avatar-radius;
     @include avatar-size(36px);
 
@@ -1490,7 +1499,7 @@ a .account__avatar {
     }
   }
 
-  &-overlay {
+  &-overlay-wrapper {
     @include avatar-radius;
     @include avatar-size(24px);
 

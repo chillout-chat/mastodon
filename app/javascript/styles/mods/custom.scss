@@ -14,13 +14,12 @@
 	to { transform: rotate(-37.6deg) skew(-30deg); }
 }
 
-.status__avatar-cat {
-  top: 16px;
-  position: absolute;
-
+.avatar__wrapper-cat,
+.account__avatar-overlay-base-wrapper-cat,
+.account__avatar-overlay-overlay-wrapper-cat {
   &:before, &:after {
     background: #df548f;
-    border: solid 4px $classic-secondary-color;
+		border: solid 4px $classic-secondary-color;
     box-sizing: border-box;
     position: absolute;
     content: '';
@@ -48,27 +47,40 @@
   }
 
   &:hover {
-    &:before {
-      animation: earwiggleleft 1s infinite;
-    }
-
-    &:after {
-      animation: earwiggleright 1s infinite;
-    }
+    &:before { animation: earwiggleleft 1s infinite; }
+    &:after { animation: earwiggleright 1s infinite; }
   }
 
-  .account__avatar {
+  .account__avatar,
+	.account__avatar-overlay-base,
+	.account__avatar-overlay-overlay {
     z-index: 1;
     border-radius: 50%;
   }
 }
 
-.notification {
-	.status__avatar-cat {
-		top: 10px;
+.account__header .avatar__wrapper-cat {
+	&:before, &:after { border-width: 7px; }
+	&:before { left: 2px; }
+	&:after { right: -2px; }
+}
 
-		&:before, &:after {
-	    display: none;
-	  }
+.account__avatar-overlay-base-wrapper-cat,
+.account__avatar-overlay-overlay-wrapper-cat {
+  &:before, &:after { z-index: -1; }
+}
+
+.account__avatar-overlay-base-wrapper-cat {
+	&:before, &:after {
+		height: 18px;
+    width: 18px;
+		border-width: 3px;
 	}
+
+	&:after { right: 12px; }
+}
+
+.quote-status .avatar__wrapper-cat,
+.account__avatar-overlay-overlay-wrapper-cat {
+	&:before, &:after { border-width: 2px; }
 }
