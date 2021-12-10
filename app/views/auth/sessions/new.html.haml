@@ -20,8 +20,12 @@
   .simple_form.alternative-login
     %h4= t('auth.or_log_in_with')
 
-    .actions
-      - resource_class.omniauth_providers.each do |provider|
-        = link_to t("auth.providers.#{provider}", default: provider.to_s.chomp("_oauth2").capitalize), omniauth_authorize_path(resource_name, provider), class: "button button-#{provider}", method: :post
+    - resource_class.omniauth_providers.each do |provider|
+      .actions
+        = link_to omniauth_authorize_path(resource_name, provider), class: "button button-#{provider}", method: :post do
+          %i{:class => ['fa', "fa-#{provider}"]}
+          %span
+            &nbsp;
+            = t("auth.providers.#{provider}") || provider.to_s.chomp("_oauth2").capitalize
 
 .form-footer= render 'auth/shared/links'

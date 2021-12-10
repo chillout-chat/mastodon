@@ -780,6 +780,7 @@ ja:
     link_to_otp: 携帯電話から二段階認証コードを入力するか、リカバリーコードを入力してください
     link_to_webauth: セキュリティキーを使用する
     login: ログイン
+    login_with_provider: "%{provider_name}でログイン"
     logout: ログアウト
     migrate_account: 別のアカウントに引っ越す
     migrate_account_html: 引っ越し先を明記したい場合は<a href="%{path}">こちら</a>で設定できます。
@@ -787,6 +788,7 @@ ja:
     providers:
       cas: CAS
       saml: SAML
+      github: GitHub
     register: 登録する
     registration_closed: "%{instance} は現在、新規登録停止中です"
     resend_confirmation: 確認メールを再送する

@@ -788,6 +788,7 @@ en:
     link_to_otp: Enter a two-factor code from your phone or a recovery code
     link_to_webauth: Use your security key device
     login: Log in
+    login_with_provider: "Login with %{provider_name}"
     logout: Logout
     migrate_account: Move to a different account
     migrate_account_html: If you wish to redirect this account to a different one, you can <a href="%{path}">configure it here</a>.
@@ -795,6 +796,7 @@ en:
     providers:
       cas: CAS
       saml: SAML
+      github: GitHub
     register: Sign up
     registration_closed: "%{instance} is not accepting new members"
     resend_confirmation: Resend confirmation instructions

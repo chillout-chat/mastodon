@@ -11,3 +11,13 @@
     = f.button :button, t('auth.login'), type: :submit, class: 'button button-primary'
 
   %p.hint.subtle-hint= link_to t('auth.trouble_logging_in'), new_user_password_path
+
+- if Devise.omniauth_configs.keys.length()
+  .simple_form.alternative-login
+    - Devise.omniauth_configs.keys.each do |provider|
+      .actions
+        = link_to omniauth_authorize_path('user', provider), class: "button button-#{provider}", method: :post do
+          %i{:class => ['fa', "fa-#{provider}"]}
+          %span
+            &nbsp;
+            = t('auth.login_with_provider', provider_name: t("auth.providers.#{provider}")) || provider.to_s.chomp("_oauth2").capitalize

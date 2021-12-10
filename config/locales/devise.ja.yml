@@ -16,6 +16,7 @@ ja:
       timeout: セッションの有効期限が切れました。続行するには再度ログインしてください。
       unauthenticated: 続行するにはログインするか、アカウントを作成してください。
       unconfirmed: 続行するにはメールアドレスを確認する必要があります。
+      should_register_before_auth_login: 続行するには登録する必要があります。
     mailer:
       confirmation_instructions:
         action: メールアドレスの確認

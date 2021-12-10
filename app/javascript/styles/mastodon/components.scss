@@ -103,7 +103,8 @@
   &.button-primary,
   &.button-alternative,
   &.button-secondary,
-  &.button-alternative-2 {
+  &.button-alternative-2,
+  &.button-github {
     font-size: 16px;
     line-height: 36px;
     height: auto;
@@ -147,6 +148,17 @@
 
     &:disabled {
       opacity: 0.5;
+    }
+  }
+
+  &.button-github {
+    background: #373e47;
+    color: $white;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: lighten(#373e47, 4%);
     }
   }
 
