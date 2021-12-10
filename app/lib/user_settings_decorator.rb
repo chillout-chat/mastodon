@@ -30,6 +30,7 @@ class UserSettingsDecorator
     user.settings['reduce_motion']       = reduce_motion_preference if change?('setting_reduce_motion')
     user.settings['disable_swiping']     = disable_swiping_preference if change?('setting_disable_swiping')
     user.settings['custom_css']          = custom_css if change?('setting_custom_css')
+    user.settings['enable_koruri']       = enable_koruri if change?('setting_enable_koruri')
     user.settings['system_font_ui']      = system_font_ui_preference if change?('setting_system_font_ui')
     user.settings['noindex']             = noindex_preference if change?('setting_noindex')
     user.settings['theme']               = theme_preference if change?('setting_theme')
@@ -97,6 +98,10 @@ class UserSettingsDecorator
 
   def disable_swiping_preference
     boolean_cast_setting 'setting_disable_swiping'
+  end
+
+  def enable_koruri
+    boolean_cast_setting 'setting_enable_koruri'
   end
 
   def custom_css

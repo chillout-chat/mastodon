@@ -30,6 +30,12 @@
 
     = stylesheet_link_tag '/inert.css', skip_pipeline: true, media: 'all', id: 'inert-style'
 
+    - if user_signed_in?
+      - unless (not current_user.setting_enable_koruri) or current_user.setting_system_font_ui
+        %link{ rel: 'stylesheet', href: '/koruri/koruri.css' }/
+    - else
+      %link{ rel: 'stylesheet', href: '/koruri/koruri.css' }/
+
     - if Setting.custom_css.present? || Setting.custom_css.present?
       = stylesheet_link_tag custom_css_path(Digest::SHA1.hexdigest("#{Setting.custom_css if Setting.custom_css.present?}\n#{current_user.setting_custom_css if user_signed_in?}")), host: request.host, media: 'all'
 
