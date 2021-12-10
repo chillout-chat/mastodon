@@ -9,7 +9,7 @@ module HomeHelper
 
   def account_link_to(account, button = '', path: nil)
     content_tag(:div, class: 'account') do
-      content_tag(:div, class: 'account__wrapper') do
+      content_tag(:div, class: 'account__wrapper account__wrapper-home') do
         section = if account.nil?
                     content_tag(:div, class: 'account__display-name') do
                       content_tag(:div, class: 'account__avatar-wrapper') do

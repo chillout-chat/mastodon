@@ -1481,9 +1481,7 @@ a .account__avatar {
   cursor: pointer;
 }
 
-.batch-table .account__avatar,
-.accounts-table .account__avatar,
-.contact-widget .account__avatar {
+.account__wrapper-home .account__avatar {
   position: relative;
 }
 
