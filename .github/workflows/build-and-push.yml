@@ -3,7 +3,7 @@ name: Build and Push to Container Registry
 on:
   push:
     branches:
-      - chillout-chat/main
+      - sakura-tel/main
 
 jobs:
   build-and-push:
@@ -27,4 +27,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/chillout-chat/mastodon:latest
+          tags: ghcr.io/sakura-tel/mastodon:latest
