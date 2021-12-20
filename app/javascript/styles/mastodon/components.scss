@@ -1493,6 +1493,7 @@ a .account__avatar {
   cursor: pointer;
 }
 
+.public-layout .account__avatar,
 .account__wrapper-home .account__avatar {
   position: relative;
 }
@@ -2695,6 +2696,7 @@ a.account__display-name {
 
   &.darker {
     background: $ui-base-color;
+    z-index: 10;
   }
 }
 
