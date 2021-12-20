@@ -16,15 +16,16 @@ media_host ||= host_to_url(ENV['S3_CLOUDFRONT_HOST'])
 media_host ||= host_to_url(ENV['S3_HOSTNAME']) if ENV['S3_ENABLED'] == 'true'
 media_host ||= assets_host
 
-koruri_host = "#{host_to_url('koruri.chillout.chat')}"
+koruri_host       = "#{host_to_url('koruri.chillout.chat')}"
+google_fonts_host = "#{host_to_url('fonts.googleapis.com')} #{host_to_url('fonts.gstatic.com')}"
 
 Rails.application.config.content_security_policy do |p|
   p.base_uri        :none
   p.default_src     :none
   p.frame_ancestors :none
-  p.font_src        :self, assets_host, koruri_host
+  p.font_src        :self, assets_host, koruri_host, google_fonts_host
   p.img_src         :self, :https, :data, :blob, assets_host
-  p.style_src       :self, assets_host, koruri_host
+  p.style_src       :self, assets_host, koruri_host, google_fonts_host
   p.media_src       :self, :https, :data, assets_host
   p.frame_src       :self, :https
   p.manifest_src    :self, assets_host

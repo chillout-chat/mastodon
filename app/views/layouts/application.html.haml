@@ -10,6 +10,10 @@
 
     - if storage_host?
       %link{ rel: 'dns-prefetch', href: storage_host }/
+    
+    %link{ rel: 'preconnect', href: 'https://koruri.chillout.chat' }/
+    %link{ rel: 'preconnect', href: 'https://fonts.googleapis.com' }/
+    %link{ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true }/
 
     %link{ rel: 'icon', href: favicon_path, type: 'image/x-icon' }/
     %link{ rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }/
@@ -29,12 +33,6 @@
     %meta{ name: 'style-nonce', content: request.content_security_policy_nonce }
 
     = stylesheet_link_tag '/inert.css', skip_pipeline: true, media: 'all', id: 'inert-style'
-
-    - if user_signed_in?
-      - unless (not current_user.setting_enable_koruri) or current_user.setting_system_font_ui
-        = stylesheet_link_tag 'https://koruri.chillout.chat/koruri.css', skip_pipeline: true, media: 'all'
-    - else
-      = stylesheet_link_tag 'https://koruri.chillout.chat/koruri.css', skip_pipeline: true, media: 'all'
 
     - if Setting.custom_css.present? || Setting.custom_css.present?
       = stylesheet_link_tag custom_css_path(Digest::SHA1.hexdigest("#{Setting.custom_css if Setting.custom_css.present?}\n#{current_user.setting_custom_css if user_signed_in?}")), host: request.host, media: 'all'
